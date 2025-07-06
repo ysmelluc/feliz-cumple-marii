@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Para marianyeli 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #fde2e4, #fad2e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    #carta {
+      width: 300px;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    #carta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.3);
+    }
+
+    #mensaje {
+      display: none;
+      font-size: 24px;
+      color: #6d6875;
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <img id="carta" src="carta-cerrada.png" alt="Carta" />
+  <div id="mensaje">🎂 ¡Feliz cumpleaños! 🎉<br>Te quiero mucho, Mari. 🫶</div>
+
+  <audio id="musica" loop>
+    <source src="cumple-piano.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    const carta = document.getElementById('carta');
+    const mensaje = document.getElementById('mensaje');
+    const musica = document.getElementById('musica');
+    let paso = 0;
+
+    carta.addEventListener('click', () => {
+      if (paso === 0) {
+        musica.play();  // Inicia la música en el primer clic
+      }
+
+      paso++;
+
+      if (paso === 1) {
+        carta.src = 'carta-abierta.jpg';
+      } else if (paso === 2) {
+        carta.src = 'papel-saliendo.png';
+      } else if (paso === 3) {
+        carta.src = 'papel-doblado.png';  // Imagen del papel doblado fuera del sobre
+      } else if (paso === 4) {
+        carta.src = 'carta.png';  // Imagen del papel desdoblado
+      } else if (paso === 5) {
+        carta.style.display = 'none';
+        mensaje.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
